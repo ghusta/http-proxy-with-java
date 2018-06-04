@@ -1,5 +1,7 @@
 = Overview
-:toc:
+:author: Guillaume Husta
+:toc: auto
+:toclevels: 3
 
 Testing HTTP(S) proxy with Java.
 
@@ -11,6 +13,15 @@ Testing HTTP(S) proxy with Java.
 *** HTTPS : `https.proxyHost`, `https.proxyPort`
 *** etc.
 ** Proxy class : `DIRECT`, `HTTP`, `SOCKS`
+
+Example :
+
+_So, in order to create an HTTP proxy object you would call:_
+[source,java]
+----
+SocketAddress addr = new InetSocketAddress("webcache.example.com", 8080);
+Proxy proxy = new Proxy(Proxy.Type.HTTP, addr);
+----
 
 == Tools
 
