@@ -1,0 +1,21 @@
+= Overview
+:toc:
+
+Testing HTTP(S) proxy with Java.
+
+== References
+
+* https://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html[Java Networking and Proxies]
+** System Properties :
+*** HTTP : `http.proxyHost`, `http.proxyPort`, `http.nonProxyHosts`
+*** HTTPS : `https.proxyHost`, `https.proxyPort`
+*** etc.
+** Proxy class : `DIRECT`, `HTTP`, `SOCKS`
+
+== Tools
+
+=== mitmproxy
+
+*mitmproxy* is a free and open source interactive HTTPS proxy.
+
+See : https://mitmproxy.org/[https://mitmproxy.org/]
