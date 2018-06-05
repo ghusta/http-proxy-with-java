@@ -85,3 +85,5 @@ Then to make it work with Java, we can use the following system properties :
 
 * `javax.net.ssl.trustStore` : location of the trust store
 * `javax.net.ssl.trustStorePassword` : password for the trust store
+
+_Generated with Asciidoctor {asciidoctor-version}_
