@@ -86,4 +86,16 @@ Then to make it work with Java, we can use the following system properties :
 * `javax.net.ssl.trustStore` : location of the trust store
 * `javax.net.ssl.trustStorePassword` : password for the trust store
 
+==== Test with proxy returns HTTP 502 instead of 200
+
+Maybe _mitmproxy_ is badly configured.
+
+HTTP code 502 means `Bad Gateway or Proxy Error`.
+
+Here is an example of what is logged on the _mitmproxy_ side :
+```
+GET https://github.com/
+    ← Server connection to ('github.com', 443) failed: Error connecting to "github.com": [Errno -3] Try again
+```
+
 _Generated with Asciidoctor {asciidoctor-version}_
