@@ -1,0 +1,16 @@
+= Use mitmproxy with Docker
+
+== Docker image
+
+* https://hub.docker.com/r/mitmproxy/mitmproxy/
+
+== Installation
+
+* https://docs.mitmproxy.org/stable/overview-installation/#docker-images
+
+== Usage
+
+* https://github.com/mitmproxy/mitmproxy/tree/master/docker#usage
+** mitmproxy
+** mitmdump
+** mitmweb
