@@ -2,17 +2,19 @@
 :author: Guillaume Husta
 :toc: auto
 :toclevels: 3
+:icons: font
 
 Testing HTTP(S) proxy with Java.
 
 == References
 
 * https://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html[Java Networking and Proxies]
-** System Properties :
+** *2) System Properties* :
 *** HTTP : `http.proxyHost`, `http.proxyPort`, `http.nonProxyHosts`
 *** HTTPS : `https.proxyHost`, `https.proxyPort`
 *** etc.
-** Proxy class : `DIRECT`, `HTTP`, `SOCKS`
+** *3) Proxy class* : `DIRECT`, `HTTP`, `SOCKS`
+** *4) ProxySelector* : used in conjunction with system property `java.net.useSystemProxies`
 
 Example :
 
@@ -30,3 +32,51 @@ Proxy proxy = new Proxy(Proxy.Type.HTTP, addr);
 *mitmproxy* is a free and open source interactive HTTPS proxy.
 
 See : https://mitmproxy.org/[https://mitmproxy.org/]
+
+== FAQ
+
+=== Potential errors
+
+==== PKIX path building failed / unable to find valid certification path to requested target
+
+Trace :
+
+``
+Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+``
+
+Reason :
+
+A certificate is necessary for accessing HTTPS urls with the JVM.
+
+Solution :
+
+See :
+
+* https://docs.mitmproxy.org/stable/concepts-certificates/
+* https://docs.oracle.com/cd/E19906-01/820-4916/6ngbm6hri/index.html[Installing a Root Certificate (HTTPS Only)]
+* https://docs.microsoft.com/fr-fr/java/azure/java-sdk-add-certificate-ca-store[Adding a root certificate to the Java CA certificates store]
+
+How to :
+
+Check the https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html[keytool] syntax :
+
+```
+keytool -importcert -help
+```
+
+NOTE: `-import` is an alias for `-importcert`.
+
+Import the certificate for Java :
+```
+keytool -importcert -trustcacerts -alias mitmproxyca -file ./mitmproxy-ca-cert.cer -keystore ./mitmproxycacert -noprompt
+```
+
+WARNING: If having this problem : _ERROR "keytool : java.util.IllegalFormatConversionException: d != java.lang.String"_
+Try adding `-J-Duser.language=en` to the command.
+
+Check it's OK :
+
+```
+keytool -list -keystore ./mitmproxycacert [-rfc]
+```
