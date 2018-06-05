@@ -80,3 +80,8 @@ Check it's OK :
 ```
 keytool -list -keystore ./mitmproxycacert [-rfc]
 ```
+
+Then to make it work with Java, we can use the following system properties :
+
+* `javax.net.ssl.trustStore` : location of the trust store
+* `javax.net.ssl.trustStorePassword` : password for the trust store
