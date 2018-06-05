@@ -69,7 +69,7 @@ NOTE: `-import` is an alias for `-importcert`.
 
 Import the certificate for Java :
 ```
-keytool -importcert -trustcacerts -alias mitmproxyca -file ./mitmproxy-ca-cert.cer -keystore ./mitmproxycacert -noprompt
+keytool -importcert -trustcacerts -alias mitmproxyca -file ./mitmproxy-ca-cert.cer -keystore ./mitmproxycacert.jks -noprompt
 ```
 
 WARNING: If having this problem : _ERROR "keytool : java.util.IllegalFormatConversionException: d != java.lang.String"_
@@ -78,7 +78,7 @@ Try adding `-J-Duser.language=en` to the command.
 Check it's OK :
 
 ```
-keytool -list -keystore ./mitmproxycacert [-rfc]
+keytool -list -keystore ./mitmproxycacert.jks [-rfc]
 ```
 
 Then to make it work with Java, we can use the following system properties :
