@@ -115,6 +115,12 @@ public class HttpProxyTest {
         assertThat(subjects).contains("O=mitmproxy, CN=mitmproxy", "CN=github.com");
         // same as preceding
         assertThat(serverCertificates).extracting("SubjectDN.name").contains("O=mitmproxy, CN=mitmproxy", "CN=github.com");
+
+        List<String> issuers = Arrays.stream(x509Certificates)
+                .map(X509Certificate::getIssuerDN)
+                .map(Principal::getName)
+                .collect(toList());
+        assertThat(issuers).containsOnly("O=mitmproxy, CN=mitmproxy");
     }
 
     @Test
