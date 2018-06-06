@@ -39,6 +39,10 @@ The client side is used in our case. We can use `regular` or `upstream` modes.
 
 See : https://docs.mitmproxy.org/stable/concepts-modes/
 
+For example, the upstream mode :
+
+image::doc/media/proxy-modes-upstream.png[Upstream Proxy]
+
 == FAQ
 
 === Potential errors
