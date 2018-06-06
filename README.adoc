@@ -33,6 +33,12 @@ Proxy proxy = new Proxy(Proxy.Type.HTTP, addr);
 
 See : https://mitmproxy.org/[https://mitmproxy.org/]
 
+==== Modes of Operation
+
+The client side is used in our case. We can use `regular` or `upstream` modes.
+
+See : https://docs.mitmproxy.org/stable/concepts-modes/
+
 == FAQ
 
 === Potential errors
