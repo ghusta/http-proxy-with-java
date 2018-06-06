@@ -22,8 +22,10 @@ import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toSet;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class HttpProxyTest {
@@ -116,10 +118,10 @@ public class HttpProxyTest {
         // same as preceding
         assertThat(serverCertificates).extracting("SubjectDN.name").contains("O=mitmproxy, CN=mitmproxy", "CN=github.com");
 
-        List<String> issuers = Arrays.stream(x509Certificates)
+        Set<String> issuers = Arrays.stream(x509Certificates)
                 .map(X509Certificate::getIssuerDN)
                 .map(Principal::getName)
-                .collect(toList());
+                .collect(toSet());
         assertThat(issuers).containsOnly("O=mitmproxy, CN=mitmproxy");
     }
 
